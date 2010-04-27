@@ -15,14 +15,13 @@
           %input{:class => "field", :name => "surname1", :size => "20", :maxlength => "50", :title => "Street where you grew up", :type => "text"}
           +
           %input{:class => "field", :name => "surname2", :size => "20", :maxlength => "50", :title => "Headteacher\342\200\231s surname", :type => "text"}
-          \=
           %p
             %input{:name => "twitter", :type => "checkbox", :checked => "checked"}
             %span
               Send to
               %a{:href => "http://twitter.com/yourtoryname"} @yourtoryname
               account on Twitter
-            %input{:type => "submit", :value => "Go!"}
+            %input{:type => "submit", :value => "Get My Tory Name!"}
       %p#result= @tory_name
     %script{:src => "http://www.google.com/jsapi"}
     :javascript
