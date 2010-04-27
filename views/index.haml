@@ -1,0 +1,46 @@
+!!!
+%html{ :lang => 'en' }
+  %head
+    %meta{ :charset => 'UTF-8' }
+    %title Your Tory Name
+    %link{ :href => '/styles.css', :rel => 'stylesheet', :media => 'all' }
+  %body
+    #container
+      %img{:alt => "A portrait of a Tory", :height => "120", :src => "/tory.jpg", :title => "A portrait of a Tory", :width => "120"}
+      %h1 Your Tory Name
+      %form{:action => "/result", :method => "post"}
+        %fieldset
+          %input{:class => "field", :name => "forename", :size => "20", :maxlength => "50", :title => "Dad\342\200\231s name", :type => "text"}
+          +
+          %input{:class => "field", :name => "surname1", :size => "20", :maxlength => "50", :title => "Street where you grew up", :type => "text"}
+          +
+          %input{:class => "field", :name => "surname2", :size => "20", :maxlength => "50", :title => "Headteacher\342\200\231s surname", :type => "text"}
+          \=
+          %p
+            %input{:name => "twitter", :type => "checkbox", :checked => "checked"}
+            %span
+              Send to
+              %a{:href => "http://twitter.com/yourtoryname"} @yourtoryname
+              account on Twitter
+            %input{:type => "submit", :value => "Go!"}
+      %p#result= @tory_name
+    %script{:src => "http://www.google.com/jsapi"}
+    :javascript
+      google.load("jquery", "1.4.2");
+      google.setOnLoadCallback(function() {
+        $("input[title]").each(function() {
+          if($(this).val() === "") {
+            $(this).val($(this).attr('title'));
+          }
+          $(this).focus(function() {
+            if($(this).val() == $(this).attr("title")) {
+              $(this).val("").addClass("focused");
+            }
+          });
+          $(this).blur(function() {
+            if($(this).val() === "") {
+              $(this).val($(this).attr("title")).removeClass("focused");
+            }
+          });
+        });
+      });
