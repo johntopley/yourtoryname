@@ -23,11 +23,12 @@
               account on Twitter
             %input{:type => "submit", :value => "Get My Tory Name!"}
       %p#result= @name
-      %h2 Recent
-      %ul
-        - @tories.each do |tory|
-          %li= tory.name
-      %p#copyright
+      - if @tories
+        %h2 Recent
+        %ul
+          - @tories.each do |tory|
+            %li= tory.name
+      %p#footer
         \©2010
         %a{ :href => 'http://johntopley.com/' }
           John Topley
