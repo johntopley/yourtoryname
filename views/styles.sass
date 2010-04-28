@@ -1,4 +1,5 @@
 !toryblue = #0727b0
+!grey = #999
 
 body
   background: #fff
@@ -11,35 +12,41 @@ body
 a
   color: #000
   text-decoration: none
+  &:hover
+    text-decoration: underline
   
 fieldset
   border: none
   padding: 0
   margin: 0
   
-span
-  font-size: 80%
-  
 ul
   list-style: none
   margin: 0
   padding: 0
   
-li:nth-last-of-type(4)
-  opacity: 0.6
+li
+  &:nth-last-of-type(4)
+    opacity: 0.6
   
-li:nth-last-of-type(3)
-  opacity: 0.5
+  &:nth-last-of-type(3)
+    opacity: 0.5
   
-li:nth-last-of-type(2)
-  opacity: 0.3
+  &:nth-last-of-type(2)
+    opacity: 0.3
   
-li:last-child
-  opacity: 0.1
+  &:last-child
+    opacity: 0.1
   
 #container
   margin: 0 auto
   width: 800px
+  
+#copyright
+  color = !grey
+  font-size: 0.8em
+  a
+    color = !grey
   
 #result
   font-size: 300%
@@ -48,7 +55,7 @@ li:last-child
   
 .field
   border: 1px solid #ccc
-  color: #999
+  color = !grey
   font: inherit
   padding: 5px
   

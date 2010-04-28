@@ -27,6 +27,13 @@
       %ul
         - @tories.each do |tory|
           %li= tory.name
+      %p#copyright
+        \©2010
+        %a{ :href => 'http://johntopley.com/' }
+          John Topley
+        |
+        %a{ :href => 'http://github.com/johntopley/yourtoryname' }
+          Source
       %script{:src => "http://www.google.com/jsapi"}
     :javascript
       google.load("jquery", "1.4.2");
