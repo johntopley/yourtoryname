@@ -4,7 +4,7 @@ require 'dm-timestamps'
 require 'haml'
 require 'sass'
 
-set :haml, { :format => :html5 }
+set :haml, { :format => :html5, :escape_html => true }
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/names.db")
 
@@ -21,10 +21,10 @@ end
 
 before do
   headers 'Content-Type' => 'text/html; charset=utf-8'
-  @tories = Tory.all :limit => 10, :order => :created_at.desc
+  @tories = Tory.all :limit => 10, :order => [:created_at.desc]
 end
 
-get '/' do
+get '/?' do
   haml :index
 end
 
