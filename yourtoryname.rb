@@ -8,7 +8,7 @@ set :haml, { :format => :html5 }
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/names.db")
 
-class Name
+class Tory
   include DataMapper::Resource
   property :id,         Serial
   property :name,       String
@@ -21,6 +21,7 @@ end
 
 before do
   headers 'Content-Type' => 'text/html; charset=utf-8'
+  @tories = Tory.all :limit => 10, :order => :created_at.desc
 end
 
 get '/' do
@@ -28,7 +29,13 @@ get '/' do
 end
 
 post '/result' do
-  @tory_name = "#{params[:forename].capitalize} #{params[:surname1].capitalize}-#{params[:surname2].capitalize}"
+  forename = params[:forename].capitalize
+  surname1 = params[:surname1].capitalize
+  surname2 = params[:surname2].capitalize
+  if forename != 'Dad’s name' && surname1 != 'Street where you grew up' && surname2 != 'Headteacher’s surname'
+    @name = "#{forename} #{surname1}-#{surname2}"
+    @tory = Tory.create(:name => @name)
+  end
   haml :index
 end
 

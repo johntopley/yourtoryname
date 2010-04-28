@@ -22,8 +22,13 @@
               %a{:href => "http://twitter.com/yourtoryname"} @yourtoryname
               account on Twitter
             %input{:type => "submit", :value => "Get My Tory Name!"}
-      %p#result= @tory_name
-    %script{:src => "http://www.google.com/jsapi"}
+      %p#result= @name
+      #recent
+        %h2 Recent
+        %ul
+          - @tories.each do |tory|
+            %li= tory.name
+      %script{:src => "http://www.google.com/jsapi"}
     :javascript
       google.load("jquery", "1.4.2");
       google.setOnLoadCallback(function() {
