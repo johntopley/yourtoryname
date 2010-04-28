@@ -15,7 +15,7 @@ class Tory
   property :created_at, DateTime
 end
 
-configure :development do
+configure do
   DataMapper.auto_upgrade!
 end
 
