@@ -3,6 +3,7 @@ require 'dm-core'
 require 'dm-timestamps'
 require 'haml'
 require 'sass'
+require 'twitter'
 
 set :haml, { :format => :html5, :escape_html => true }
 
