@@ -22,6 +22,7 @@ end
 
 before do
   headers 'Content-Type' => 'text/html; charset=utf-8'
+  @tories = Tory.all(:limit => 10, :order => [:created_at.desc])
 end
 
 helpers do
@@ -34,7 +35,6 @@ helpers do
 end
 
 get '/?' do
-  @tories = Tory.all(:limit => 10, :order => [:created_at.desc])
   haml :index
 end
 
