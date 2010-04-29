@@ -30,7 +30,7 @@ helpers do
     oauth = Twitter::OAuth.new(ENV['consumer_key'], ENV['consumer_secret'])
     oauth.authorize_from_access(ENV['oauth_token'], ENV['oauth_token_secret'])
     client = Twitter::Base.new(oauth)
-    client.update("#{name} (Dad’s name + street where you grew up + headteacher’s surname)" + ' #torynames')
+    client.update("#{name} (Dad’s name + street where you grew up + headteacher’s surname) %23torynames")
   end
 end
 
