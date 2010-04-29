@@ -24,7 +24,7 @@ before do
 end
 
 helpers do
-  def send_to_twitter(name) do
+  def send_to_twitter(name)
     oauth = Twitter::OAuth.new(ENV['consumer_key'], ENV['consumer_secret'])
     oauth.authorize_from_access(ENV['oauth_token'], ENV['oauth_token_secret'])
     client = Twitter::Base.new(oauth)
@@ -33,7 +33,7 @@ helpers do
 end
 
 get '/?' do
-  @tories = Tory.all :limit => 10, :order => [:created_at.desc]
+  @tories = Tory.all(:limit => 10, :order => [:created_at.desc])
   haml :index
 end
 
@@ -43,8 +43,8 @@ post '/result' do
   surname2 = params[:surname2].capitalize
   if forename != 'Dad’s name' && surname1 != 'Street where you grew up' && surname2 != 'Headteacher’s surname'
     @name = "#{forename} #{surname1}-#{surname2}"
-    @tory = Tory.create :name => @name
-    send_to_twitter @name if params[:twitter]
+    @tory = Tory.create(:name => @name)
+    send_to_twitter(@name) if params[:twitter]
   end
   haml :index
 end
