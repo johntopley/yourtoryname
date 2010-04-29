@@ -1,7 +1,3 @@
 = Your Tory Name
 
-Truth Tables is a handy Boolean algebra reference for programmers.
-
-== Dependencies
-
-* Truth Tables uses the haml and sass gems
+* Dad’s name + street where you grew up + headteacher’s surname = your Tory name!
